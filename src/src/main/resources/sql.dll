@@ -1,0 +1,31 @@
+-- Crear tabla "repuesto"
+CREATE TABLE repuesto (
+    id SERIAL PRIMARY KEY,
+    color INTEGER,
+    nombre VARCHAR(255),
+    marca VARCHAR(255),
+    modelo VARCHAR(255),
+    precio DOUBLE PRECISION,
+    fechaInventario DATE,
+    venceElProducto BOOLEAN
+);
+
+-- Crear tabla "usuario"
+CREATE TABLE usuario (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(255),
+    apellido VARCHAR(255),
+    email VARCHAR(255),
+    contrasena VARCHAR(255),
+    fechaRegistro DATE
+);
+
+-- Crear tabla "venta"
+CREATE TABLE venta (
+    id SERIAL PRIMARY KEY,
+    idUsuario INTEGER REFERENCES usuario(id),
+    idRepuesto INTEGER REFERENCES repuesto(id),
+    fechaVenta DATE,
+    cantidad INTEGER,
+    total DOUBLE PRECISION
+);
